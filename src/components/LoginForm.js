@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import ActiveUsersService from '../services/ActiveUsersService';
-import RemovedUsersService from '../services/RemovedUsersService';
-
 export default class LoginForm extends Component {
     constructor(props) {
         super(props);
@@ -17,17 +14,17 @@ export default class LoginForm extends Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    componentWillMount() {
+   /* componentWillMount() {
         this.handleLoad()
     }
 
     handleLoad() {
         window.activeUsers = new ActiveUsersService();
         window.removedUsers = new RemovedUsersService();
-    }
+    }  */
 
     componentWillReceiveProps(nextProps){
-        this.props.history.push('/register')
+        this.props.history.push('/admin_panel')
     }
 
     loginHandleChange(event) {

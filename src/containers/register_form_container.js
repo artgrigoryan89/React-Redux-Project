@@ -6,7 +6,7 @@ import RegisterForm from '../components/RegisterForm';
 
 function mapStateToProps(state) {
     return {
-        data: state.user.data
+        user: state.user
     }
 };
 

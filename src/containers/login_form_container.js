@@ -7,7 +7,7 @@ import LoginForm from '../components/LoginForm';
 
 function mapStateToProps(state) {
     return {
-        data: state.user.data
+        user: state.user
     }
 };
 
