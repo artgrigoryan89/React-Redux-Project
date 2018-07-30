@@ -1,4 +1,4 @@
-import UsersService from './UsersService';
+import UsersService from './UsersServiceFs';
 
 export default class RemovedUsersService extends UsersService {
     constructor() {

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {Container, Row, Col, Card, Form, FormGroup, Label, Input} from "reactstrap";
 
-export default  class RegisterForm extends Component {
+export default class RegisterForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -49,29 +50,36 @@ export default  class RegisterForm extends Component {
     render() {
         return (
             <div className="registerForm">
-                <form onSubmit={this.registerButtonHandler}>
-                    <label>
-                        First Name
-                        <input type="text" placeholder="Enter Name" value={this.state.nameValue}
+                <Form onSubmit={this.registerButtonHandler}>
+                    <FormGroup>
+                        <Label>
+                            First Name </Label>
+                        <Input type="text" placeholder="Enter Name" value={this.state.nameValue}
                                onChange={this.nameHandleChange}/>
-                    </label>
-                    <label>
-                        Last Name
-                        <input type="text" placeholder="Enter Login" value={this.state.lastNameValue}
+
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>
+                            Last Name </Label>
+                        <Input type="text" placeholder="Enter Login" value={this.state.lastNameValue}
                                onChange={this.lastNameHandleChange}/>
-                    </label>
-                    <label>
-                        Login
-                        <input type="text" placeholder="Enter Login" value={this.state.loginValue}
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>
+                            Login </Label>
+                        <Input type="text" placeholder="Enter Login" value={this.state.loginValue}
                                onChange={this.loginHandleChange}/>
-                    </label>
-                    <label>
-                        Password
-                        <input type="password" placeholder="Enter Password" value={this.state.passwordValue}
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>
+                            Password </Label>
+                        <Input type="password" placeholder="Enter Password" value={this.state.passwordValue}
                                onChange={this.passwordHandleChange}/>
-                    </label>
-                    <input className="logButton" type="submit" value="Register"/>
-                </form>
+                    </FormGroup>
+                    <FormGroup>
+                        <Input className="logButton" type="submit" value="Register"/>
+                    </FormGroup>
+                </Form>
             </div>
         )
     }

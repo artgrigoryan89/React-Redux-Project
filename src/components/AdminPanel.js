@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
+import {Table, Button} from 'reactstrap';
 
 export default class AdminPanel extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            base: '',
-        };
         this.activeUsersBtnHandler = this.activeUsersBtnHandler.bind(this);
         this.removedUsersBtnHandler = this.removedUsersBtnHandler.bind(this);
         this.activateBtnHandler = this.activateBtnHandler.bind(this);
@@ -27,7 +25,7 @@ export default class AdminPanel extends Component {
 
     removeBtnHandler(e) {
         let userLogin = e.target.id;
-        let key = this.state.base.key;
+        let key = this.props.data.key;
         this.props.removeUser(userLogin, key);
     }
 
@@ -41,9 +39,8 @@ export default class AdminPanel extends Component {
                         <td>{user.name}</td>
                         <td>{user.lastName}</td>
                         <td>{user.login}</td>
-                        <td>{user.pass}</td>
                         <td>
-                            <button id={user.login} className="logButton" onClick={this.removeBtnHandler}>Remove</button>
+                            <Button outline size="sm" color="secondary" id={user.login}  onClick={this.removeBtnHandler}>Remove</Button>
                         </td>
                     </tr>)
                 }
@@ -52,13 +49,12 @@ export default class AdminPanel extends Component {
                         <td>{user.name}</td>
                         <td>{user.lastName}</td>
                         <td>{user.login}</td>
-                        <td>{user.pass}</td>
                         <td>
-                            <button id={user.login} className="logButton" onClick={this.removeBtnHandler}>Remove</button>
+                            <Button outline size="sm" color="secondary" id={user.login} onClick={this.removeBtnHandler}>Remove</Button>
                         </td>
                         <td>
-                            <button id={user.login} className="logButton" onClick={this.activateBtnHandler}>Activate
-                            </button>
+                            <Button outline size="sm" color="secondary" id={user.login} onClick={this.activateBtnHandler}>Activate
+                            </Button>
                         </td>
                     </tr>)
 
@@ -70,21 +66,20 @@ export default class AdminPanel extends Component {
     render() {
         return (
             <div className="admin">
-                <button key="activeusers" onClick={this.activeUsersBtnHandler} className="logButton">Active Users
-                </button>
-                <button key="removedusers" onClick={this.removedUsersBtnHandler} className="logButton">Removed Users
-                </button>
-                <table>
+                <Table striped size="sm">
                     <tbody>
                     <tr key="up">
                         <td>Name</td>
                         <td>Last Name</td>
                         <td>Login</td>
-                        <td>Password</td>
                     </tr>
-                    {this.createTable(this.state.base)}
+                    {this.createTable(this.props.data)}
                     </tbody>
-                </table>
+                </Table>
+                <Button outline  size="sm" color="primary" key="activeusers" onClick={this.activeUsersBtnHandler} >Active Users
+                </Button>{' '}
+                <Button outline  size="sm" color="primary" key="removedusers" onClick={this.removedUsersBtnHandler}>Removed Users
+                </Button>
             </div>
         );
     }

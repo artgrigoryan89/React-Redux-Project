@@ -17,6 +17,10 @@ module.exports = {
     ]
   },
 
+   node: {
+        fs: 'empty'
+    },
+
   debug: true,
     
   devtool: 'cheap-source-map',

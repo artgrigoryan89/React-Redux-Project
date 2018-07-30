@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { getActiveUsers, getRemovedUsers, activateUser, removeUser  } from '../module';
+import { getActiveUsers, getRemovedUsers, activateUser, removeUser  } from '../module/user_module';
 
 import AdminPanel from '../components/AdminPanel';
 
 function mapStateToProps(state) {
     return {
-        base: state.base
+        data: state.base.data,
     }
 };
 

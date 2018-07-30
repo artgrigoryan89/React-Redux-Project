@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import {Container, Row, Col, Card, Form, FormGroup, Label, Input} from "reactstrap";
 
 export default class LoginForm extends Component {
     constructor(props) {
@@ -24,7 +25,8 @@ export default class LoginForm extends Component {
     }  */
 
     componentWillReceiveProps(nextProps){
-        this.props.history.push('/admin_panel')
+        console.log(nextProps);
+        this.props.history.push('/admin_panel');
     }
 
     loginHandleChange(event) {
@@ -48,20 +50,25 @@ export default class LoginForm extends Component {
     render() {
         return (
             <div className="formInput">
-                <form onSubmit={this.onFormSubmit}>
-                    <label>
-                        Login
-                        <input type="text" placeholder="Enter Login" value={this.state.loginValue}
+
+                <Form onSubmit={this.onFormSubmit}>
+                    <FormGroup>
+                    <Label center>
+                        Login </Label>
+                        <Input type="text" placeholder="Enter Login" value={this.state.loginValue}
                                onChange={this.loginHandleChange} required/>
-                    </label>
-                    <label>
-                        Password
-                        <input type="password" placeholder="Enter Password" value={this.state.passwordValue}
+                    </FormGroup>
+                    <FormGroup>
+                    <Label>
+                        Password </Label>
+                        <Input type="password" placeholder="Enter Password" value={this.state.passwordValue}
                                onChange={this.passwordHandleChange} required/>
-                    </label>
-                    <input className="logButton" type="submit" value="Login" />
-                </form>
-                <NavLink to='/register'>Register</NavLink>
+                    </FormGroup>
+                    <FormGroup>
+                    <Input className="logButton" type="submit" value="Login" />
+                    </FormGroup>
+                </Form>
+                <NavLink className='link' to='/register'>Register</NavLink>
             </div>
         );
     }
