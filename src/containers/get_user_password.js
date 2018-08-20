@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { loginUser, forgotPassword } from '../module/user_module';
+import {getPassword } from '../module/user_module';
 
-import LoginForm from '../components/LoginForm';
+import GetPassword from '../components/GetPassword';
 
 function mapStateToProps(state) {
     return {
@@ -12,8 +12,7 @@ function mapStateToProps(state) {
 };
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({loginUser}, dispatch)
+    return bindActionCreators({getPassword}, dispatch)
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm))
-
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GetPassword))

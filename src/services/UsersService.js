@@ -1,25 +1,43 @@
 export default class UsersService {
     constructor(key) {
         this.key = key;
-        if (!(key in localStorage)) {
-            let users = {};
-            localStorage.setItem(key, JSON.stringify(users));
-            this.users = JSON.parse(localStorage.getItem(key));
-        }
-        else {
-            this.users = JSON.parse(localStorage.getItem(key));
-        }
+        this.users = {};
     }
 
-    addUser(user) {
-        if (!(user.login in this.users)) {
-            this.users[user.login] = user;
-            localStorage.setItem(this.key, JSON.stringify(this.users));
-        };
-    }
+    addUser(login) {
+            let key = this.key;
+            let data = JSON.stringify({login, key});
+            fetch('http://localhost:3000/user/addUser', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (data) {
+                console.log(data)
+            }).catch(function (error) {
+                    console.log(error);
+                }
+            );
+        }
 
     removeUser(login) {
-        delete this.users[login];
-        localStorage.setItem(this.key, JSON.stringify(this.users))
+        let key = this.key;
+        let data = JSON.stringify({login, key});
+        fetch('http://localhost:3000/user/removeUser', {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(function (data) {
+            console.log(data)
+        }).catch(function (error) {
+                console.log(error);
+            }
+        );
     }
 }
+

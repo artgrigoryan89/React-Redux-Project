@@ -1,0 +1,27 @@
+body{
+    background-color: rgba(4,4,4,0.09);
+}
+
+.formInput{
+    margin:auto;
+    margin-top: 300px;
+    height: 250px;
+    width:200px;
+}
+.link{
+    margin: auto;
+}
+
+.registerForm{
+    margin:auto;
+    margin-top: 300px;
+    height: 250px;
+    width:200px;
+}
+.logButton{
+    margin-left:70px;
+
+}
+.getButton{
+    margin-left: 40px;
+}
