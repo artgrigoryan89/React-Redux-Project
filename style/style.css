@@ -9,7 +9,7 @@ body{
     width:200px;
 }
 .link{
-    margin-left: 70px;
+    margin: auto;
 }
 
 .registerForm{
@@ -17,4 +17,11 @@ body{
     margin-top: 300px;
     height: 250px;
     width:200px;
+}
+.logButton{
+    margin-left:70px;
+
+}
+.getButton{
+    margin-left: 40px;
 }

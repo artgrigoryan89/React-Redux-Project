@@ -8,10 +8,6 @@ import thunkMiddleware from 'redux-thunk';
 import App from './app';
 import reducers from './reducers';
 
-//const middleware = thunk;
-
-//const createStoreWithMiddleware = applyMiddleware(middleware)(createStore);
-
 const store = createStore(
     reducers,
     applyMiddleware(

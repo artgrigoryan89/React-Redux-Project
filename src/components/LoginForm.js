@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import {Container, Row, Col, Card, Form, FormGroup, Label, Input} from "reactstrap";
+import React, {Component} from 'react';
+import {NavLink, Link} from 'react-router-dom';
+import {Form, FormGroup, Label, Input} from "reactstrap";
+import {Alert, Button, Nav, NavItem} from 'reactstrap';
 
 export default class LoginForm extends Component {
     constructor(props) {
@@ -8,25 +9,22 @@ export default class LoginForm extends Component {
 
         this.state = {
             loginValue: '',
-            passwordValue: ''
+            passwordValue: '',
+            errorMsgValue: '',
         };
         this.loginHandleChange = this.loginHandleChange.bind(this);
         this.passwordHandleChange = this.passwordHandleChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.forgotBtnHandler = this.forgotBtnHandler.bind(this);
     }
 
-   /* componentWillMount() {
-        this.handleLoad()
-    }
-
-    handleLoad() {
-        window.activeUsers = new ActiveUsersService();
-        window.removedUsers = new RemovedUsersService();
-    }  */
-
-    componentWillReceiveProps(nextProps){
-        console.log(nextProps);
-        this.props.history.push('/admin_panel');
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.data) {
+            this.props.history.push('/admin_panel');
+        }
+        else {
+            this.setState({loginValue: '', passwordValue: '', errorMsgValue: 'Please insert correct login or password!'})
+        }
     }
 
     loginHandleChange(event) {
@@ -47,28 +45,39 @@ export default class LoginForm extends Component {
         this.setState({loginValue: '', passwordValue: ''});
     }
 
+    forgotBtnHandler(event) {
+        this.props.forgotPassword(this.state.loginValue);
+    }
+
     render() {
         return (
             <div className="formInput">
-
-                <Form onSubmit={this.onFormSubmit}>
+                <Alert color="primary" isOpen={true}>{this.state.errorMsgValue}</Alert>
+                <Form>
                     <FormGroup>
-                    <Label center>
-                        Login </Label>
+                        <Label>
+                            Login </Label>
                         <Input type="text" placeholder="Enter Login" value={this.state.loginValue}
                                onChange={this.loginHandleChange} required/>
                     </FormGroup>
                     <FormGroup>
-                    <Label>
-                        Password </Label>
+                        <Label>
+                            Password </Label>
                         <Input type="password" placeholder="Enter Password" value={this.state.passwordValue}
                                onChange={this.passwordHandleChange} required/>
                     </FormGroup>
                     <FormGroup>
-                    <Input className="logButton" type="submit" value="Login" />
+                        <Button onClick={this.onFormSubmit} className="logButton" type="submit" size="sm"> Login </Button>
                     </FormGroup>
                 </Form>
-                <NavLink className='link' to='/register'>Register</NavLink>
+                <Nav vertical>
+                    <NavItem>
+                        <NavLink className='link' to='/register'>Register</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className='link' to='/getPassword'>Forgot password?</NavLink>
+                    </NavItem>
+                </Nav>
             </div>
         );
     }
